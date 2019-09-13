@@ -18,3 +18,10 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
     age = db.Column(db.Integer, nullable=False)
+
+class Reviews(db.Model):
+    __tablename__ = "reviews"
+    id = db.Column(db.Integer, primary_key=True)
+    reviewer = db.Column(db.String, nullable=False)
+    content = db.Column(db.String, nullable=False)
+    rating = db.Column(db.Integer, nullable=False)
