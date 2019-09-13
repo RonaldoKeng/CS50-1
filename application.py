@@ -5,6 +5,11 @@ from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+# Goodreads API
+import requests
+res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "xhkXxRzctHjfRU0tqg", "isbns": "9781632168146"})
+print(res.json())
+
 app = Flask(__name__)
 
 # Check for environment variable
