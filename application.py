@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, session, render_template
+from flask import Flask, session, render_template, request
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -30,8 +30,25 @@ db = scoped_session(sessionmaker(bind=engine))
 def index():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET","POST"])
 def login():
+    # Clear existing login
+    session.clear()
+
+    # If submitting a form
+    if request.method == "POST":
+        return render_template("login.html")
+        # Finds user
+        
+        # Confirms correct password
+
+        # Remember session ID
+
+        # Redirect to homepage
+    
+    # If directed to /login
+    else:
+        return render_template("login.html")
     return "Login"
 
 @app.route("/logout")
