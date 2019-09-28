@@ -28,10 +28,14 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
+    """BeeBook's Homepage"""
+
     return render_template("index.html")
 
 @app.route("/login", methods=["GET","POST"])
 def login():
+    """Logins an existing user"""
+
     # Clear existing login
     session.clear()
 
@@ -49,9 +53,13 @@ def login():
     # If directed to /login
     else:
         return render_template("login.html")
-    return "Login"
 
 @app.route("/logout")
 def logout():
-    return "Logout"
+    """Logs user out"""
+    
+    # Clear existing login
+    session.clear()
 
+    # Redirect to homepage
+    return render_template("index.html")
