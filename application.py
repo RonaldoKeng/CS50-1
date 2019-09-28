@@ -39,7 +39,7 @@ def login():
     # Clear existing login
     session.clear()
 
-    # If submitting a form
+    # If form submitted
     if request.method == "POST":
         return render_template("login.html")
         # Finds user
@@ -57,9 +57,36 @@ def login():
 @app.route("/logout")
 def logout():
     """Logs user out"""
-    
+
     # Clear existing login
     session.clear()
 
     # Redirect to homepage
     return render_template("index.html")
+
+@app.route("/register")
+def register():
+    """Registers a new user"""
+
+    # Clear existing login
+    session.clear()
+
+    # If form submitted
+    if request.method == "POST":
+
+        # Store inputs in variables
+
+        # Check all inputs have been filled
+
+        # Check password matches
+
+        # Hash the password
+
+        # Insert user into database
+
+        # Store user in session
+        return render_template("register.html")
+    
+    # If directed to /register
+    else:
+        return render_template("register.html")
